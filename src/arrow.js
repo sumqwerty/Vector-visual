@@ -1,14 +1,4 @@
 class Arrow{
-    // constructor(_magnitude, _angle){
-    //     this.magnitude = _magnitude;
-    //     this.angle = _angle;
-    //     this.xComponent = _magnitude * cos(radians(_angle));
-    //     this.yComponent = _magnitude * sin(radians(_angle));
-    //     this.x = 0;
-    //     this.y = 0;
-
-    // }
-
     constructor(_magnitude, _angle, _x, _y, sketch){
         this.sketch = sketch;
         this.magnitude = _magnitude;
@@ -19,6 +9,12 @@ class Arrow{
         this.y = _y;
         this.x2 = this.x+this.xComponent;
         this.y2 = this.y+this.yComponent;
+        this.fade = 0;
+    }
+
+    update(){
+        this.disp();
+        this.toolTip();
     }
 
     disp(){
@@ -31,5 +27,17 @@ class Arrow{
 
 
     toolTip(){
+        let d = this.sketch.dist(this.x,this.y,this.sketch.mouseX,this.sketch.mouseY) + this.sketch.dist(this.x2,this.y2,this.sketch.mouseX,this.sketch.mouseY);
+        if(this.sketch.abs(d-this.magnitude) < 1){
+            this.sketch.noStroke();
+            this.sketch.fill(255,255,255,this.fade);
+            this.sketch.rect(this.sketch.mouseX,this.sketch.mouseY,100,100);
+            if(this.fade < 150){
+                this.fade += 5;
+            }
+        }
+        else{
+            this.fade = 0;
+        }
     }
 }

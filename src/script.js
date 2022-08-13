@@ -1,3 +1,6 @@
+
+
+
 const s = ( sketch ) => {
     let arr = [];
 
@@ -9,13 +12,17 @@ const s = ( sketch ) => {
     sketch.draw = () => {
         sketch.background(50);
         for(let i=0; i<arr.length; ++i){
-            arr[i].disp();
+            arr[i].update();
         }
     };
 
-    sketch.mousePressed = () => {
-        arr.push(new Arrow(100,0,sketch.mouseX, sketch.mouseY, sketch));
+    sketch.generateVector = () => {
+        arr.push(new Arrow(100,sketch.random(90),sketch.width/2, sketch.height/2, sketch));
     };
 };
+
   
 let myp5 = new p5(s);
+function createVector(){
+    myp5.generateVector();
+}
