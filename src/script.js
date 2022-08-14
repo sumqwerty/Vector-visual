@@ -36,7 +36,7 @@ let myp5 = new p5(s);
 
 function createVector(){
     
-    myp5.generateVector('control-center');
+    myp5.generateVector('vector-controls');
 
 }
 
