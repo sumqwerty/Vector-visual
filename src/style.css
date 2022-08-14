@@ -1,7 +1,7 @@
 body{
     overflow: hidden;
+    background-color: #181a1b;
 }
-
 
 #control-center{
     display: flex;
@@ -10,17 +10,22 @@ body{
     height: 100vh;
     max-height: 100vh;
     width: 20vw;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(24, 26, 27, 0.5);
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+#global-controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 
 #vector-controls{
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0);
-    /* overflow-x: hidden;
-    overflow-y: auto; */
 }
 
 .bttn{
@@ -33,12 +38,27 @@ body{
 }
 
 .outer-div{
-    border: solid;
     border-radius: 10px;
+    background: rgba(255,255,255,0.7);
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
-#global-controls{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+input[type="range"]{
+    -moz-appearance: none;
+    height: 30px;
+    background-color: #aaa;
+    overflow: hidden;
+    z-index: 1;
 }
+
+input[type="range"]::-moz-range-thumb{
+    -moz-appearance: none;
+    width: 1px;
+    height: 30px;
+    background-color: #f5f5f5;
+    box-shadow: -500px 0px 0px 500px #f5f5f5;
+    border: none;
+    z-index: inherit;
+}
+

@@ -40,7 +40,6 @@ class Arrow{
         this.magSlider.min=-500;
         this.magSlider.max=500;
         this.magSlider.value=this.magnitude;
-        // this.magSlider.id = "cont";
         innerDiv1.appendChild(this.magSlider);
         innerDiv1.appendChild(magLabel);
 
@@ -60,8 +59,7 @@ class Arrow{
         outerDiv.appendChild(innerDiv2);
         this.controlParent.appendChild(outerDiv);
 
-        outerDiv.style.backgroundColor = "rgba(255,255,255,0.7)";
-        outerDiv.style.margin = "0.5rem";
+        outerDiv.classList.add("outer-div");
         
         let classObj = this;
         this.magSlider.addEventListener('input', function (event){
