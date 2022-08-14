@@ -6,7 +6,7 @@ const s = ( sketch ) => {
 
     sketch.setup = () => {
         sketch.createCanvas(window.innerWidth, window.innerHeight);
-        document.body.style.overflow = "hidden";
+        
     };
   
     sketch.draw = () => {
@@ -16,13 +16,30 @@ const s = ( sketch ) => {
         }
     };
 
-    sketch.generateVector = () => {
-        arr.push(new Arrow(100,sketch.random(90),sketch.width/2, sketch.height/2, sketch));
+    sketch.generateVector = (_controlContainer) => {
+        let d = new Arrow(100,sketch.random(90),sketch.width/2, sketch.height/2, sketch, _controlContainer);
+        arr.push(d);
     };
+
+    sketch.deleteAll = () => {
+        while(arr.length > 0){
+            arr[0].deleteControls();
+            arr.shift();
+        }
+    }
 };
 
-  
+
+
 let myp5 = new p5(s);
+
+
 function createVector(){
-    myp5.generateVector();
+    
+    myp5.generateVector('control-center');
+
+}
+
+function deleteAll(){
+    myp5.deleteAll();
 }
