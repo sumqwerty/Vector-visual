@@ -17,7 +17,7 @@ const s = ( sketch ) => {
     };
 
     sketch.generateVector = (_controlContainer) => {
-        let d = new Arrow(100,sketch.random(90),sketch.width/2, sketch.height/2, sketch, _controlContainer);
+        let d = new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer);
         arr.push(d);
     };
 

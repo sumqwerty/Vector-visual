@@ -44,10 +44,20 @@ body{
     padding: 0.5rem;
 }
 
+.rangeVal{
+    pointer-events: none;
+    user-select: none;
+    position:fixed;
+    z-index: 2;
+    font-size: 1.2rem;
+    margin-left: 0.25rem;
+}
+
 input[type="range"]{
     -moz-appearance: none;
-    height: 30px;
+    height: 1.5rem;
     background-color: #aaa;
+    border: none;
     overflow: hidden;
     z-index: 1;
 }
@@ -55,10 +65,10 @@ input[type="range"]{
 input[type="range"]::-moz-range-thumb{
     -moz-appearance: none;
     width: 1px;
-    height: 30px;
+    height: 1.5rem;
     background-color: #f5f5f5;
-    box-shadow: -500px 0px 0px 500px #f5f5f5;
     border: none;
+    box-shadow: -500px 0px 0px 500px #ff0000;
     z-index: inherit;
 }
 

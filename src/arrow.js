@@ -15,6 +15,7 @@ class Arrow{
         this.maxRange = 200; // once it moved range increases
         this.inRangeToMove = this.minRange; 
         this.controlParent = document.getElementById(_controlContainer);
+        this.color = this.sketch.color(this.sketch.random(100,255),this.sketch.random(100,255),this.sketch.random(100,255));
         this.createControl();
     }
 
@@ -34,24 +35,33 @@ class Arrow{
 
 
         this.magSlider = document.createElement("input");
-        let magLabel = document.createElement("span")
+        let magLabel = document.createElement("span");
+        let magValue = document.createElement("div");
         magLabel.innerHTML = "Magnitude";
+        magValue.innerHTML = this.magnitude;
+        magValue.classList.add("rangeVal");
         this.magSlider.type = "range";
         this.magSlider.min=-500;
         this.magSlider.max=500;
         this.magSlider.value=this.magnitude;
         innerDiv1.appendChild(this.magSlider);
+        innerDiv1.appendChild(magValue);
         innerDiv1.appendChild(magLabel);
+        
 
 
         this.angleSlider = document.createElement("input");
         let angleLabel = document.createElement("span");
+        let angleValue = document.createElement("div");
+        angleValue.classList.add("rangeVal");
         angleLabel.innerHTML = "Angle";
+        angleValue.innerHTML = this.angle;
         this.angleSlider.type = "range";
         this.angleSlider.min = 0;
         this.angleSlider.max = 360;
         this.angleSlider.value=this.angle;
         innerDiv2.appendChild(this.angleSlider);
+        innerDiv2.appendChild(angleValue);
         innerDiv2.appendChild(angleLabel);
         
 
@@ -64,11 +74,15 @@ class Arrow{
         let classObj = this;
         this.magSlider.addEventListener('input', function (event){
             classObj.updateMagnitude(parseFloat(event.target.value));
+            magValue.innerHTML = event.target.value;
         });
 
         this.angleSlider.addEventListener('input', function (event){
             classObj.updateAngle(parseFloat(event.target.value));
+            angleValue.innerHTML = event.target.value;
         });
+
+        magValue.addEventListener('click',(event)=>{},{capture: false});
 
     }
 
@@ -120,8 +134,8 @@ class Arrow{
     }
 
     disp(){
-        this.sketch.fill(255,0,0);
-        this.sketch.stroke(255,0,0);
+        this.sketch.fill(this.color);
+        this.sketch.stroke(this.color);
         this.sketch.strokeWeight(2);
         this.sketch.circle(this.x,this.y,10);
         this.sketch.line(this.x,this.y,this.x2,this.y2);
