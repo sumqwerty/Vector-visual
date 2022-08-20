@@ -115,7 +115,7 @@ class Arrow{
 
     get mouseDist(){
         let d = this.sketch.dist(this.x,this.y,this.sketch.mouseX,this.sketch.mouseY) + this.sketch.dist(this.x2,this.y2,this.sketch.mouseX,this.sketch.mouseY);
-        return d-this.magnitude;
+        return d-Math.abs(this.magnitude);
     }
 
     dragMove(){
@@ -123,6 +123,7 @@ class Arrow{
             this.x = this.sketch.mouseX;
             this.y = this.sketch.mouseY;
             this.inRangeToMove = this.maxRange;
+            // console.log("drag on");
         }
         else{
             this.inRangeToMove = this.minRange;
@@ -145,6 +146,7 @@ class Arrow{
     toolTip(){
         
         if(this.sketch.abs(this.mouseDist) < 1){
+            // console.log("in range");
             this.sketch.noStroke();
             this.sketch.fill(255,255,255,this.fade);
             this.sketch.rect(this.sketch.mouseX,this.sketch.mouseY,100,100);

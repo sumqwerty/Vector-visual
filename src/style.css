@@ -47,7 +47,7 @@ body{
 .rangeVal{
     pointer-events: none;
     user-select: none;
-    position:fixed;
+    position:absolute;
     z-index: 2;
     font-size: 1.2rem;
     margin-left: 0.25rem;
@@ -56,6 +56,7 @@ body{
 input[type="range"]{
     -moz-appearance: none;
     height: 1.5rem;
+    width: 10rem;
     background-color: #aaa;
     border: none;
     overflow: hidden;
