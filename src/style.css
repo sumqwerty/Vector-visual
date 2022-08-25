@@ -3,6 +3,7 @@ body{
     background-color: #181a1b;
 }
 
+
 #control-center{
     display: flex;
     flex-direction: column;
@@ -44,7 +45,7 @@ body{
     padding: 0.5rem;
 }
 
-.rangeVal{
+/* .rangeVal{
     pointer-events: none;
     user-select: none;
     position:absolute;
@@ -69,7 +70,70 @@ input[type="range"]::-moz-range-thumb{
     height: 1.5rem;
     background-color: #f5f5f5;
     border: none;
-    box-shadow: -500px 0px 0px 500px #ff0000;
+    box-shadow: -500px 0px 0px 500px rgba(0,0,0,0);
     z-index: inherit;
+} */
+
+.close-button{
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgb(237, 85, 101);
+    width: 1.15rem;
+    height: 1.15rem;
+    z-index: 3;
+    align-self: flex-end;
+}
+
+.close-button:hover{
+    background-image: url('./assets/cross_32.png');
+    background-size: contain;
+}
+.rangeVal{
+    position:absolute;
+    z-index: 3;
+    font-size: 2rem;
+    pointer-events: none;
+    padding-left: 3px;
+    align-self: center;
+}
+
+.innerRect{
+    width: 300px;
+    height: 40px;
+    position: absolute;
+    z-index: 2;
+    align-self: center;
+    pointer-events: none;
+    border-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 300px;
+    height: 40px;
+    background-color: #aaa;
+    overflow: hidden;
+    z-index: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 1px;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    box-shadow: -500px 0px 0px 500px rgba(0,0,0,0);
+    
+}
+
+input[type="range"]::-moz-range-thumb{
+    -moz-appearance: none;
+    width: 1px;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    box-shadow: -500px 0px 0px 500px rgba(0,0,0,0);
+    border: none;
 }
 
