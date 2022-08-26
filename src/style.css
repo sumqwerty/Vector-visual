@@ -1,6 +1,7 @@
 body{
     overflow: hidden;
     background-color: #181a1b;
+    color: white;
 }
 
 
@@ -30,54 +31,28 @@ body{
 }
 
 .bttn{
-    width: 100px;
-    height: 30px;
-    border-style: solid;
+    width: 10rem;
+    height: 1.95rem;
+    border-style: none;
     border-radius: 20px;
     background-color: red;
     margin: 1rem;
+    color: white;
+    font-weight: bold;
 }
 
 .outer-div{
     border-radius: 10px;
-    background: rgba(255,255,255,0.7);
+    /* background: rgba(255,255,255,0.7); */
+    background: rgba(24, 26, 27, 0.7);
     margin: 0.5rem;
     padding: 0.5rem;
 }
 
-/* .rangeVal{
-    pointer-events: none;
-    user-select: none;
-    position:absolute;
-    z-index: 2;
-    font-size: 1.2rem;
-    margin-left: 0.25rem;
-}
-
-input[type="range"]{
-    -moz-appearance: none;
-    height: 1.5rem;
-    width: 10rem;
-    background-color: #aaa;
-    border: none;
-    overflow: hidden;
-    z-index: 1;
-}
-
-input[type="range"]::-moz-range-thumb{
-    -moz-appearance: none;
-    width: 1px;
-    height: 1.5rem;
-    background-color: #f5f5f5;
-    border: none;
-    box-shadow: -500px 0px 0px 500px rgba(0,0,0,0);
-    z-index: inherit;
-} */
-
 .close-button{
     position: absolute;
     border-radius: 50%;
-    background-color: rgb(237, 85, 101);
+    background-color: rgb(148, 16, 30);
     width: 1.15rem;
     height: 1.15rem;
     z-index: 3;
@@ -88,12 +63,13 @@ input[type="range"]::-moz-range-thumb{
     background-image: url('./assets/cross_32.png');
     background-size: contain;
 }
+
 .rangeVal{
     position:absolute;
     z-index: 3;
     font-size: 2rem;
     pointer-events: none;
-    padding-left: 3px;
+    padding-left: 0.25rem;
     align-self: center;
 }
 
@@ -105,8 +81,9 @@ input[type="range"]::-moz-range-thumb{
     align-self: center;
     pointer-events: none;
     border-style: none;
-    margin: 0px;
-    padding: 0px;
+    
+    margin: 2px;
+    /* padding: 0px; */
 }
 
 input[type="range"]{
@@ -114,9 +91,11 @@ input[type="range"]{
     -moz-appearance: none;
     width: 300px;
     height: 40px;
-    background-color: #aaa;
+    /* background-color: #aaa; */
+    background-color: rgb(72, 78, 81);
     overflow: hidden;
     z-index: 1;
+    color: black;
 }
 
 input[type="range"]::-webkit-slider-thumb{

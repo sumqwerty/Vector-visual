@@ -15,7 +15,7 @@ class Arrow{
         this.maxRange = 200; // once it moved range increases
         this.inRangeToMove = this.minRange; 
         this.controlParent = document.getElementById(_controlContainer);
-        this.color = this.sketch.color(this.sketch.random(100,255),this.sketch.random(100,255),this.sketch.random(100,255));
+        this.color = this.sketch.color(this.sketch.random(0,255),this.sketch.random(0,255),this.sketch.random(0,255));
         this.createControl();
     }
     selfDestruct(){
@@ -27,77 +27,17 @@ class Arrow{
         outerDiv.style.display = "flex";
         outerDiv.style.flexDirection = "column";
 
-        this.magSlider = new scrollRange('Magnitude',200,30,0,500,this.magnitude,this.color);
-        this.angleSlider = new scrollRange('Angle',200,30,0,360,this.angle,this.color);
+        this.magSlider = new scrollRange('Magnitude',10,1.5,0,500,this.magnitude,this.color);
+        this.angleSlider = new scrollRange('Angle',10,1.5,0,360,this.angle,this.color);
         
-        // let innerDiv1 = document.createElement('div');
-        // innerDiv1.style.display = "flex";
-        // innerDiv1.style.flexDirection = "row";
-
-        // let innerDiv2 = document.createElement('div');
-        // innerDiv2.style.display = "flex";
-        // innerDiv2.style.flexDirection = "row";
-
-
-        // this.magSlider = document.createElement("input");
-        // let magLabel = document.createElement("span");
-        // let magValue = document.createElement("div");
-        // magLabel.innerHTML = "Magnitude";
-        // magValue.innerHTML = this.magnitude;
-        // magValue.classList.add("rangeVal");
-        // this.magSlider.type = "range";
-        // this.magSlider.min=-500;
-        // this.magSlider.max=500;
-        // this.magSlider.value=this.magnitude;
-        // innerDiv1.appendChild(this.magSlider);
-        // innerDiv1.appendChild(magValue);
-        // innerDiv1.appendChild(magLabel);
-        
-
-
-        // this.angleSlider = document.createElement("input");
-        // let angleLabel = document.createElement("span");
-        // let angleValue = document.createElement("div");
-        // angleValue.classList.add("rangeVal");
-        // angleLabel.innerHTML = "Angle";
-        // angleValue.innerHTML = this.angle;
-        // this.angleSlider.type = "range";
-        // this.angleSlider.min = 0;
-        // this.angleSlider.max = 360;
-        // this.angleSlider.style.backgroundColor = 'rgb(0,255,0)';
-        // this.angleSlider.value=this.angle;
-        // innerDiv2.appendChild(this.angleSlider);
-        // innerDiv2.appendChild(angleValue);
-        // innerDiv2.appendChild(angleLabel);
-        
-
         let closeButton = document.createElement('div');
         closeButton.classList.add('close-button');
         outerDiv.appendChild(closeButton);
         outerDiv.appendChild(this.magSlider.getRanger());
         outerDiv.appendChild(this.angleSlider.getRanger());
-        // outerDiv.appendChild(innerDiv1);
-        // outerDiv.appendChild(innerDiv2);
-        
         this.controlParent.appendChild(outerDiv);
 
-
-
-
         outerDiv.classList.add("outer-div");
-        
-        // let classObj = this;
-        // this.magSlider.addEventListener('input', function (event){
-        //     classObj.updateMagnitude(parseFloat(event.target.value));
-        //     magValue.innerHTML = event.target.value;
-        // });
-
-        // this.angleSlider.addEventListener('input', function (event){
-        //     classObj.updateAngle(parseFloat(event.target.value));
-        //     angleValue.innerHTML = event.target.value;
-        // });
-
-        // magValue.addEventListener('click',(event)=>{},{capture: false});
 
     }
 
@@ -115,7 +55,7 @@ class Arrow{
 
     update(){
         this.magnitude = this.magSlider.value
-        this.angle = this.angleSlider.value;
+        this.angle = -1 * this.angleSlider.value;
         this.xComponent = this.magnitude * this.sketch.cos(this.sketch.radians(this.angle));
         this.yComponent = this.magnitude * this.sketch.sin(this.sketch.radians(this.angle));
         this.x2 = this.x+this.xComponent;
@@ -139,7 +79,6 @@ class Arrow{
             this.x = this.sketch.mouseX;
             this.y = this.sketch.mouseY;
             this.inRangeToMove = this.maxRange;
-            // console.log("drag on");
         }
         else{
             this.inRangeToMove = this.minRange;
@@ -160,9 +99,7 @@ class Arrow{
 
 
     toolTip(){
-        
         if(this.sketch.abs(this.mouseDist) < 1){
-            // console.log("in range");
             this.sketch.noStroke();
             this.sketch.fill(255,255,255,this.fade);
             this.sketch.rect(this.sketch.mouseX,this.sketch.mouseY,100,100);
