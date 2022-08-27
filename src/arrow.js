@@ -1,7 +1,8 @@
 class Arrow{
 
-    constructor(_magnitude, _angle, _x, _y, sketch, _controlContainer){
+    constructor(_magnitude, _angle, _x, _y, sketch, _controlContainer, _id){
         this.sketch = sketch;
+        this.id = _id;
         this.magnitude = _magnitude;
         this.angle = _angle;
         this.xComponent = _magnitude * this.sketch.cos(this.sketch.radians(_angle));
@@ -18,9 +19,7 @@ class Arrow{
         this.color = this.sketch.color(this.sketch.random(0,255),this.sketch.random(0,255),this.sketch.random(0,255));
         this.createControl();
     }
-    selfDestruct(){
 
-    }
     createControl(){
         let outerDiv = document.createElement('div');
         this.outerDiv = outerDiv;
@@ -38,6 +37,13 @@ class Arrow{
         this.controlParent.appendChild(outerDiv);
 
         outerDiv.classList.add("outer-div");
+
+
+        let obj = this;
+        // this will call the deleteThis function of the sketch object defiend in the script.js file
+        closeButton.addEventListener('click',(event) => {
+            obj.sketch.deleteThis(obj.id);
+        });
 
     }
 
@@ -61,7 +67,6 @@ class Arrow{
         this.x2 = this.x+this.xComponent;
         this.y2 = this.y+this.yComponent;
 
-
         this.disp();
         this.toolTip();
         this.dragMove();
@@ -83,10 +88,6 @@ class Arrow{
         else{
             this.inRangeToMove = this.minRange;
         }
-    }
-
-    calc(){
-        
     }
 
     disp(){

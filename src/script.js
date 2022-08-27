@@ -1,33 +1,50 @@
 const s = ( sketch ) => {
-    let arr = [];
+    let arr = {};
+    let lastVectorID = 0;
+    let numOfVectors = 0;
 
     sketch.setup = () => {
-        
-        sketch.createCanvas(window.innerWidth, window.innerHeight);
-        
+        sketch.createCanvas(window.innerWidth, window.innerHeight);        
     };
+
     sketch.draw = () => {
         sketch.background(50);
-        for(let i=0; i<arr.length; ++i){
+        for(let i in arr){
             arr[i].update();
         }
     };
+
     sketch.generateVector = (_controlContainer) => {
-        // let d = new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer);
-        arr.push(new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer));
+        lastVectorID += 1;
+        numOfVectors += 1;
+        // let d = new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer, lastVectorID);
+        //arr.push(new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer, lastVectorID));
+        arr[lastVectorID] = new Arrow(100,0,sketch.width/2, sketch.height/2, sketch, _controlContainer, lastVectorID);
     };
+
     sketch.deleteAll = () => {
-        while(arr.length > 0){
-            arr[0].deleteControls();
-            arr.shift();
+        numOfVectors = 0;
+        while(lastVectorID > 0){
+            sketch.deleteLast();
         }
     };
+
     sketch.deleteLast = () => {
-        arr.pop().deleteControls();
+        arr[lastVectorID].deleteControls();
+        delete arr[lastVectorID];
+        lastVectorID -= 1;
+        numOfVectors -= 1;
     };
+
     sketch.keyTyped = () => {
         if(sketch.key == 'd')console.log(arr);
     };
+
+    sketch.deleteThis = (vecID) => {
+        arr[vecID].deleteControls();
+        delete arr[vecID];
+        numOfVectors -= 1;
+    } 
 };
 
 let myp5 = new p5(s);
@@ -40,3 +57,4 @@ function deleteLast(){
 function deleteAll(){
     myp5.deleteAll();
 }
+

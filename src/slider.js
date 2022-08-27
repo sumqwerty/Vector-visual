@@ -11,6 +11,7 @@ class scrollRange{
         this.value = _value;
         this.color = _color;
         this.name = _name;
+        
     }
 
     getRanger(){
